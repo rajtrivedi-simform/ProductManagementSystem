@@ -66,6 +66,7 @@ const searchprod = (prodName) => {
 };
 
 search.addEventListener("keyup", (e) => {
+  console.log(e.target.value)
   debounce(searchprod(e.target.value));
 });
 
