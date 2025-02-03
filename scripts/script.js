@@ -12,7 +12,7 @@ const loadHTML = () => {
     let count = 0;
     html = `<div class="d-flex justify-content-around align-items-start">
               <h2 class="mb-4">Product List</h2>
-              <a class="btn btn-primary" href="/templates/add.html">Add Product</a>
+              <a class="btn btn-primary" href="./templates/add.html">Add Product</a>
             </div>
             <div class="container-fluid d-flex justify-content-evenly flex-wrap align-items-baseline">`;
     keys.forEach((key) => {
@@ -26,10 +26,10 @@ const loadHTML = () => {
                       <h3 class="card-title prodName">${data.prodName}</h5>
                       <h6 class="card-title prodType">${data.prodType}</h5>
                       <p class="card-text text-truncate">${data.prodDesc}</p>
-                      <a href="/templates/page.html?uid=${key}" class="btn btn-primary mt-1 pe-5 ps-5">view</a>
+                      <a href="./templates/page.html?uid=${key}" class="btn btn-primary mt-1 pe-5 ps-5">view</a>
                       </div>
                       </div>`;
-      // <a href="/templates/edit.html?uid=${key}" class="btn btn-primary">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+      // <a href="./templates/edit.html?uid=${key}" class="btn btn-primary">Edit <i class="fa-solid fa-pen-to-square"></i></a>
       // <button class="btn btn-danger" onclick="removeProduct('${key}')">Delete <i class="fa-solid fa-trash"></i></button><br>
     });
 
@@ -37,7 +37,7 @@ const loadHTML = () => {
   } else {
     html = `<div class="d-flex justify-content-around align-items-center">
               <h2 class="mt-5 mb-4">No Products Found</h2>
-              <a class="btn btn-primary" href="/templates/add.html">Add Product</a>
+              <a class="btn btn-primary" href="./templates/add.html">Add Product</a>
             </div>`;
   }
 
