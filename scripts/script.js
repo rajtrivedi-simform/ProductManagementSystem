@@ -1,4 +1,6 @@
 const search = document.querySelector(".search");
+const filter = document.querySelector(".filter");
+const reset = document.querySelector(".reset");
 
 const loadHTML = () => {
   const table = document.querySelector(".content-div");
@@ -21,13 +23,14 @@ const loadHTML = () => {
       html += `<div class="card border border-dark m-3" style="width: 18rem;">
                   <img src="${data.prodImage}" class="card-img-top" alt="${data.prodName}" width="250px" height="250px">
                     <div class="card-body">
-                      <h5 class="card-title">${data.prodName}</h5>
+                      <h3 class="card-title prodName">${data.prodName}</h5>
+                      <h6 class="card-title prodType">${data.prodType}</h5>
                       <p class="card-text text-truncate">${data.prodDesc}</p>
-                      <a href="/templates/edit.html?uid=${key}" class="btn btn-primary">Edit</a>
-                      <button class="btn btn-danger" onclick="removeProduct('${key}')">Delete</button><br>
                       <a href="/templates/page.html?uid=${key}" class="btn btn-primary mt-1 pe-5 ps-5">view</a>
-                    </div>
-                </div>`;
+                      </div>
+                      </div>`;
+      // <a href="/templates/edit.html?uid=${key}" class="btn btn-primary">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+      // <button class="btn btn-danger" onclick="removeProduct('${key}')">Delete <i class="fa-solid fa-trash"></i></button><br>
     });
 
     html += ``;
@@ -50,14 +53,13 @@ const removeProduct = (key) => {
   }
 };
 
-const searchprod = (prodName) => {
+const searchProd = (prodName) => {
   if (!prodName) {
     loadHTML();
   } else {
-    const data = document.querySelectorAll(".card-title");
+    const data = document.querySelectorAll(".prodName");
 
     data.forEach((element) => {
-      console.log(element.innerHTML);
       if (!element.innerHTML.toLowerCase().includes(prodName)) {
         element.parentElement.parentElement.style.display = "none";
       }
@@ -65,9 +67,41 @@ const searchprod = (prodName) => {
   }
 };
 
+const filterProd = () => {
+  const select = document.querySelector("select").value;
+  console.log(select);
+  let count = 0;
+  if (!select) {
+    loadHTML();
+  } else {
+    const data = document.querySelectorAll(".prodType");
+    data.forEach((element) => {
+      if (element.innerHTML != select) {
+        ++count;
+        element.parentElement.parentElement.style.display = "none";
+      }
+    });
+    if (count == data.length) {
+      document.querySelector(
+        ".content-div"
+      ).innerHTML = `<h1 class="text-center">No matches found</h1>`;
+    }
+  }
+};
+
 search.addEventListener("keyup", (e) => {
-  console.log(e.target.value)
-  debounce(searchprod(e.target.value));
+  console.log(e.target.value);
+  loadHTML();
+  debounce(searchProd(e.target.value));
+});
+
+filter.addEventListener("click", () => {
+  loadHTML();
+  filterProd();
+});
+
+reset.addEventListener("click", () => {
+  loadHTML();
 });
 
 function debounce(func, timeout = 3000) {
@@ -75,6 +109,7 @@ function debounce(func, timeout = 3000) {
   return (...args) => {
     clearTimeout(timer);
     timer = setTimeout(() => {
+      console.log("debounced");
       func.apply(this, args);
     }, timeout);
   };
