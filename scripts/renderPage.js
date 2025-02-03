@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
   price.innerHTML = "₹" + prodPrice;
   sellingtype.innerHTML = sellingType;
   prodtype.innerHTML = prodType;
-  document.querySelector(".edit").href = "./templates/edit.html?uid=" + uid;
+  document.querySelector(".edit").href = "../templates/edit.html?uid=" + uid;
   document.querySelector(".btn-danger").addEventListener("click", () => {
     if (confirm("Do you want to delete this product?")) {
       if (confirm("Are you really sure about that?")) {
