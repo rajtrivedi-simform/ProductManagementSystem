@@ -23,7 +23,7 @@ const loadHTML = () => {
       html += `<div class="card border border-dark m-3" style="width: 18rem;">
                   <img src="${data.prodImage}" class="card-img-top" alt="${data.prodName}" width="250px" height="250px">
                     <div class="card-body">
-                      <h3 class="card-title prodName">${data.prodName}</h5>
+                      <h3 class="card-title overflow-hidden prodName">${data.prodName}</h5>
                       <h6 class="card-title prodType">${data.prodType}</h5>
                       <p class="card-text text-truncate">${data.prodDesc}</p>
                       <a href="./templates/page.html?uid=${key}" class="btn btn-primary mt-1 pe-5 ps-5">view</a>
@@ -101,6 +101,7 @@ filter.addEventListener("click", () => {
 });
 
 reset.addEventListener("click", () => {
+  document.querySelector(".form-select").value = "";
   loadHTML();
 });
 
