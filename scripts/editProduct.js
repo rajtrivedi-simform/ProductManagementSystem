@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem(uid, JSON.stringify(data));
       alert("Product updated successfully!");
       form.reset();
-      window.location.href = "/";
+      window.location.href = "/ProductManagementSystem/";
     } catch (err) {
       console.log(err);
     }

@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("prod-" + generateUUID(), JSON.stringify(data));
       alert("Product added successfully!");
       form.reset();
-      window.location.href = "/";
+      window.location.href = "/ProductManagementSystem/";
     } catch (err) {
       console.log(err);
     }

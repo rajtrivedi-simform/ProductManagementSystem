@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     if (confirm("Do you want to delete this product?")) {
       if (confirm("Are you really sure about that?")) {
         localStorage.removeItem(uid);
-        document.location.href = "/";
+        document.location.href = "/ProductManagementSystem/";
         // window.location.href = "/";
       }
     }
