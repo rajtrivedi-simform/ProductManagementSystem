@@ -33,7 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
         event.target.value = ""; // Clear the input value
       }
     };
+
+    reader.readAsArrayBuffer(file); // Read the file as an ArrayBuffer
   });
+
   const form = document.querySelector("form"); // Get the form element
 
   form.addEventListener("submit", async (e) => {
