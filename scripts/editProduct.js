@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   //helper functions for handling images
-  
   const imgToBase64 = (element) => {
     return new Promise((resolve, reject) => {
       const file = element.files[0];
@@ -18,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let form = document.querySelector("form"); //Get the form element
   let fileInput = document.querySelector('input[type="file"]'); //Get the file input element
   let data = JSON.parse(localStorage.getItem(uid)); //Fetch the data from localStorage
-  var img = "";
+  let img = "";
   
   //populate the form with data
   if (data) {
@@ -28,11 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
     form.prodPrice.value = data.prodPrice;
     form.prodType.value = data.prodType;
     form.sellingType.value = data.sellingType;
-    //   form.sellingType.value = data.sellingType;
     if (data.prodImage) {
       img = data.prodImage;
       document.querySelector(".prodImg").src = img;
-      console.log(img);
+      // console.log(img);
     }
   }
   const fileinput = document.querySelector('input[type="file"]'); // Get the file input element
